@@ -21,6 +21,8 @@ if (!isNaN(timeoutMs)) {
   CLIENT_OPTIONS.timeout = 300;
 }
 
+CLIENT_OPTIONS.batchSize = 1000;
+
 var defaultDimensions = {};
 var metricSender;
 
