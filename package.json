@@ -1,0 +1,23 @@
+{
+  "name": "signalfx-serverless",
+  "version": "0.0.1",
+  "description": "Node.js gcf wrapper for SignalFx",
+  "homepage": "https://signalfx.com",
+  "author": {
+    "name": "SignalFx, Inc",
+    "email": "info@signalfx.com",
+    "url": "https://signalfx.com"
+  },
+  "license": "Apache-2.0",
+  "main": "signalfx-serverless",
+  "dependencies": {
+    "signalfx": "5.0.0"
+  },
+  "bundledDependencies": [
+    "signalfx"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/signalfx/serverless-nodejs"
+  }
+}
