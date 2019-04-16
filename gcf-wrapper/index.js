@@ -46,6 +46,12 @@ class SignalFxWrapper extends WrapperCore {
       }
       sent = true;
       helper.sendGauge('function.duration', new Date().getTime() - startTime);
+      helper.sendCounter('function.invocations', 1);
+      if(this.wasCold) {
+        console.log("cold");
+        helper.sendCounter('function.cold_starts', 1);
+        this.wasCold = true;
+      }
     }
 
     try {

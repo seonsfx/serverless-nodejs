@@ -17,9 +17,8 @@ module.exports = class WrapperCore {
 
     helper.setAccessToken(accessToken);
     helper.setDefaultDimensions(Object.assign(this.defaultDimensions(), {metric_source: `${source}_wrapper`}, dimensions));
-    helper.sendCounter('function.invocations', 1);
     if (coldStart) {
-      helper.sendCounter('function.cold_starts', 1);
+      this.wasCold = true;
       coldStart = false;
     }
     return this;

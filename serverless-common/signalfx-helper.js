@@ -21,14 +21,10 @@ if (!isNaN(timeoutMs)) {
   CLIENT_OPTIONS.timeout = 300;
 }
 
-CLIENT_OPTIONS.batchSize = 1000;
-
 var defaultDimensions = {};
 var metricSender;
 
 var sendPromises = [];
-
-var dpBuffers = {};
 
 function sendMetric(metricName, metricType, metricValue, dimensions={}) {
   var dp = {
@@ -38,28 +34,6 @@ function sendMetric(metricName, metricType, metricValue, dimensions={}) {
   };
   var datapoints = {};
   datapoints[metricType] = [dp];
-
-  // if(!dpBuffers[metricType]) {
-  //   dpBuffers[metricType] = [];
-  // }
-
-  // dpBuffers[metricType].push(dp);
-
-  // var sendPromise = new Promise((resolve) => {
-  //   setTimeout(() => {
-  //     for(var mt in dpBuffers) {
-  //       console.log("Flushing " + mt + " metrics.");
-        
-  //       for(var dp of dpBuffers[mt]) {
-  //         console.log(dp);
-  //       }
-
-  //       delete dpBuffers[mt];
-  //     }
-  //     console.log("Buffer cleared. Resolving it.");
-  //     resolve();
-  //   }, 3000);
-  // })
 
   var sendPromise = metricSender.send(datapoints).catch((err) => {
     if (err) {
